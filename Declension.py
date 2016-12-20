@@ -5,6 +5,53 @@
 It contains different forms of declension  
 for e.g.'गुरु'is male and ['गुरु'='ग्'+ 'उ'+ 'र'+ 'उ'] ends with 'उ' means it belongs to ukarant_male declensiontype
 """
+from cltk.stem.sanskrit.indian_syllabifier import Syllabifier
+import cltk.corpus.sanskrit.alphabet
+lang='hindi'
+h = Syllabifier(lang)
+
+class Sanskrit:
+    charac=' '
+    def __init__(self,charac='अ'):
+        self.charac= charac
+        
+    def __str__(self):
+        return self.charac
+        
+    def __add__(self,vow):
+        ch=''
+        self_first, self_last=Sanskrit.last(self)
+        vow_first,vow_last =Sanskrit.first(vow)
+        vowel_to_matraa={'अ':'','आ' : 'ा','इ':'ि','ई':'ी','उ':'ु','ऊ':'ू','ए':'े','ऐ':'ै','ओ':'ो','औ':'ौ','ऋ':'ृ','अं':'ं','अः':'ः'}
+        if vow_first in vowel_to_matraa.keys():
+                ch= self_last+vowel_to_matraa[vow_first]
+                
+        return self_first+ch+vow_last
+          
+    """
+    __add__ is a method for most basic sandhi rules
+    last is a method to extract the last syllable
+    first is a method to extract the first syllable
+    """
+    def last(self):
+        w=''
+        current = h.orthographic_syllabify(self.charac)
+        for i in range(len(current)-1):
+            w+=current[i]
+        return w,current[len(current)-1]
+
+    def first(self):
+        w=''
+        current = h.orthographic_syllabify(self.charac)
+        i=1
+        for i in range(1,len(current)):
+            w+=current[i]
+        return current[0],w
+
+"""
+These are different forms(sequence of suffixes) to which any noun word belongs to depending on its gender and ending character.
+I will add more such forms.
+"""
 akarant_male=[['अः','औ','आः'],
               ['अम्','औ','आन्'],
               ['एन','आभ्याम्','ऐः'],
@@ -67,3 +114,19 @@ eekarant_female=[['ई','यौः','यः'],
                  ['याः','योः','ईनाम्'],
                  ['याम्','योः','ईषु'],
                  ['इ','यौ','यः']]
+def Declension_noun(word):
+    w=Sanskrit(word)
+    for i in range(8):
+        for j in range(3):
+            if i==7:
+                print('हे', end =' ')
+            print((w+Sanskrit(akarant_male[i][j])) ,end="     ")
+        print("\n")
+   
+if __name__ == '__main__':
+    print(Declension of "राम":)
+    Declension_noun("राम")
+    print(Declension of 'बालक':)
+    Declension_noun('बालक')
+    
+    """ This is just illustration , presently it works for akarant_male words """
