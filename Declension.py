@@ -124,9 +124,9 @@ def Declension_noun(word):
         print("\n")
    
 if __name__ == '__main__':
-    print(Declension of "राम":)
+    print("Declension of राम:")
     Declension_noun("राम")
-    print(Declension of 'बालक':)
+    print("Declension of बालक:")
     Declension_noun('बालक')
     
     """ This is just illustration , presently it works for akarant_male words """
