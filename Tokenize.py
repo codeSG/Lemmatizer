@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Dec 23 22:46:37 2016
-
-@author: user
+@author: sourabh garg
 """
 from cltk.stem.sanskrit.indian_syllabifier import Syllabifier
 from cltk.corpus.sanskrit.itrans.langinfo import *
