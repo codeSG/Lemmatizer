@@ -120,13 +120,13 @@ def Declension_noun(word):
         for j in range(3):
             if i==7:
                 print('हे', end =' ')
-            print((w+Sanskrit(akarant_male[i][j])) ,end="     ")
+            print((w+Sanskrit(ekarant_male[i][j])) ,end="     ")
         print("\n")
    
 if __name__ == '__main__':
-    print(Declension of "राम":)
-    Declension_noun("राम")
-    print(Declension of 'बालक':)
+    print( "Declension of 'कव':")
+    Declension_noun('कव')
+    print("Declension of बालक:")
     Declension_noun('बालक')
     
     """ This is just illustration , presently it works for akarant_male words """
