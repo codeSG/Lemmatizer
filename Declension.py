@@ -124,8 +124,13 @@ def Declension_noun(word):
         print("\n")
    
 if __name__ == '__main__':
+<<<<<<< HEAD
     print( "Declension of 'कव':")
     Declension_noun('कव')
+=======
+    print("Declension of राम:")
+    Declension_noun("राम")
+>>>>>>> a6d2e208b870d1052b7830b97cf4105aa98d8d68
     print("Declension of बालक:")
     Declension_noun('बालक')
     
