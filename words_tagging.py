@@ -2,7 +2,7 @@
 @author: sourabh garg
 Some noun words classied according to their declension type
 """
-
+import itertools
 akarant_m=['राम','देव','बाल','बालक','नर','सिंह','जन','गज','अश्व','घट','कूप','भ्रमर',
            'खग','छात्र','सागर','रोष','रन','ज्वर','व्याघ्र','वृक्ष','भ्रम','धीवर','क्रोध','देह',
            'नापित','मूषक','सुत','सर्प']
@@ -38,3 +38,10 @@ tkarant_f=['सरित्']
 ckarant_f=['वाच्']
 tkarant_n=['जगत्']
 skarant_n=['पयस्']
+
+
+all_noun=[akarant_m,ekarant_m,ukarant_m,rikarant_m,okarant_m,
+          aakarant_f,ekarant_f,eekarant_f,ukarant_f,uukarant_f,rikarant_f,ookarant_f,
+          akarant_n,ekarant_n,ukarant_n,rikarant_n,
+          nkarant_m,tkarant_m,skarant_m,tkarant_f,ckarant_f,tkarant_n,skarant_n]
+all_noun=list(itertools.chain(*all_noun))
