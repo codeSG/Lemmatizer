@@ -47,6 +47,15 @@ def complete_tokenize(word):
                    
     return tokened_list
     
+def stem_class(word):
+    lis=complete_tokenize(word)
+    length=len(lis)
+    ch=lis[length-1]
+    ch_to_stem={'अ':'a_stem_','इ':'i_stem_','उ':'u_stem_','आ':'a_stem_','ई':'ii_stem_','ऊ':'uu_stem_','ओ':'o_stem_','औ':'oo_stem_','ऋ':'r_stem_','न्':'n_stem_','त्':'t_stem_','स्':'s_stem_','च्':'c_stem_'}
+    if ch in ch_to_stem.keys():
+        return ch_to_stem[ch]
+    
+    
 if __name__ == '__main__':
     '''
     Illustration with some difficult words'''
@@ -54,3 +63,4 @@ if __name__ == '__main__':
        'उत्कंठा','कुत्ता','मत्था','उत्फुल्ल','उत्पत्ति','नृत्य','जिद्दी','सिद्धि','विद्यार्थी','द्रवित','द्वारा','द्वेष','आँध्र','संध्या','सिंह','सींग','महन्त','मन्दाकिनी','धन्धा','प्रसन्न','उन्मूलन','अन्य','कन्हैया','गुप्त','ठप्पा','प्यास','प्रणाम','हफ्ता','जब्त','कब्ज','ब्रिटिश','भ्लेच्छ','सहस्र','सहस्त्र','ह्रस्व','आर्य','चक्र','क्षत्रिय']
     for i in words:
         print(i,complete_tokenize(i))
+    print(stem_class("रामौ"))
