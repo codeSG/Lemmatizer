@@ -40,8 +40,10 @@ t_stem_neuter=['जगत्']
 s_stem_neuter=['पयस्']
 
 
-all_noun=[akarant_m,ekarant_m,ukarant_m,rikarant_m,okarant_m,
-          aakarant_f,ekarant_f,eekarant_f,ukarant_f,uukarant_f,rikarant_f,ookarant_f,
-          akarant_n,ekarant_n,ukarant_n,rikarant_n,
-          nkarant_m,tkarant_m,skarant_m,tkarant_f,ckarant_f,tkarant_n,skarant_n]
+all_noun=[a_stem_masculine,i_stem_masculine,u_stem_masculine,r_stem_masculine,o_stem_masculine,
+          a_stem_feminine,i_stem_feminine,ii_stem_feminine,u_stem_feminine,uu_stem_feminine,r_stem_feminine,oo_stem_feminine,
+          a_stem_neuter,i_stem_neuter,u_stem_neuter,r_stem_neuter,
+          n_stem_masculine,t_stem_masculine,s_stem_masculine,t_stem_feminine,c_stem_feminine,t_stem_neuter,s_stem_neuter]
 all_noun=list(itertools.chain(*all_noun))
+
+pronoun=['अस्मद्','युष्मद्','यत्','तत्','एतत्','किम्','भवत्','सर्व','इदम्']
