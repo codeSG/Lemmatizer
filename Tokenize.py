@@ -8,12 +8,7 @@ import itertools
 lang='hindi'
 h = Syllabifier(lang)
 
-def complete_tokenize(word):
-    '''
-        Complete Tokenization of a noun word into smallest unit possible
-        for e.g. विद्यार्थी = 'व्'+'इ'+'द्'+'य्'+'आ'+'र्'+'थ्'+'ई'
-    '''
-    CONSONANT=[CONSONANT_GUTTURALS,
+CONSONANT=[CONSONANT_GUTTURALS,
                CONSONANT_PALATALS,
                CONSONANT_CEREBRALS,
                CONSONANT_DENTALS,
@@ -21,8 +16,16 @@ def complete_tokenize(word):
                SEMIVOWEL_CONSONANT, 
                SIBILANT_CONSONANT,
                SONANT_ASPIRATE ]
-    CONSONANT  = list(itertools.chain(*CONSONANT))
-    matraa_to_vowel={'':'अ' , 'ा':'आ' ,'ि':'इ', 'ी':'ई', 'ु':'उ', 'ू':'ऊ','े':'ए' , 'ै':'ऐ' , 'ो':'ओ', 'ौ':'औ', 'ृ':'ऋ', 'ं':'अं','ः':'अः'}
+CONSONANT  = list(itertools.chain(*CONSONANT))
+matraa_to_vowel={'':'अ' , 'ा':'आ' ,'ि':'इ', 'ी':'ई', 'ु':'उ', 'ू':'ऊ','े':'ए' , 'ै':'ऐ' , 'ो':'ओ', 'ौ':'औ', 'ृ':'ऋ', 'ं':'अं','ः':'अः'}
+vowel_to_matraa={'अ':'','आ' : 'ा','इ':'ि','ई':'ी','उ':'ु','ऊ':'ू','ए':'े','ऐ':'ै','ओ':'ो','औ':'ौ','ऋ':'ृ','अं':'ं','अः':'ः'}
+        
+def complete_tokenize(word):
+    '''
+        Complete Tokenization of a noun word into smallest unit possible
+        for e.g. विद्यार्थी = 'व्'+'इ'+'द्'+'य्'+'आ'+'र्'+'थ्'+'ई'
+    '''
+    
     tokened_list=[]
     word_list = h.orthographic_syllabify(word)
     
@@ -56,6 +59,24 @@ def stem_class(word):
         return ch_to_stem[ch]
     
     
+def join(list_char):
+    word=''
+    CONSONANT_HALANTA = [x+'्' for x in CONSONANT]
+    CONS_TO_CONS=dict(zip(CONSONANT_HALANTA, CONSONANT))
+    length=len(list_char)
+    
+    for i in range(length):
+        if list_char[i] in CONS_TO_CONS.keys() and i==length-1:
+            word=word+list_char[i]
+        elif list_char[i] in CONS_TO_CONS.keys() and list_char [i+1] in vowel_to_matraa.keys():
+            word=word+CONS_TO_CONS[list_char[i]]
+        elif list_char[i] in CONS_TO_CONS.keys():
+            word=word+list_char[i]
+        elif list_char[i] in vowel_to_matraa.keys():
+            word=word+vowel_to_matraa[list_char[i]]
+    
+    return word
+    
 if __name__ == '__main__':
     '''
     Illustration with some difficult words'''
@@ -63,4 +84,5 @@ if __name__ == '__main__':
        'उत्कंठा','कुत्ता','मत्था','उत्फुल्ल','उत्पत्ति','नृत्य','जिद्दी','सिद्धि','विद्यार्थी','द्रवित','द्वारा','द्वेष','आँध्र','संध्या','सिंह','सींग','महन्त','मन्दाकिनी','धन्धा','प्रसन्न','उन्मूलन','अन्य','कन्हैया','गुप्त','ठप्पा','प्यास','प्रणाम','हफ्ता','जब्त','कब्ज','ब्रिटिश','भ्लेच्छ','सहस्र','सहस्त्र','ह्रस्व','आर्य','चक्र','क्षत्रिय']
     for i in words:
         print(i,complete_tokenize(i))
-    print(stem_class("रामौ"))
+    print(stem_class('पितृ'))
+    print(join(['भ्', 'ल्', 'ए', 'च्', 'छ्']))
