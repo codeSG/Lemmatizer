@@ -2,7 +2,7 @@
 """
 Created on Fri Dec 30 09:11:08 2016
 
-@author: user
+@author:sourabh garg
 """
 
 from Declension import *
