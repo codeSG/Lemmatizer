@@ -67,8 +67,11 @@ class Trie( object ):
   
 if __name__ == '__main__':
     mytrie=Trie()
-    for i in words_tagging.all_noun:
-        mytrie.insert(complete_tokenize(i))
+    for stem_cls in words_tagging.all_noun:
+        for word in stem_cls:
+#            print(word)
+#            print(complete_tokenize(word))
+            mytrie.insert(complete_tokenize(word))
     
     print(mytrie.exist(['र्', 'आ', 'म्', 'अ']))
     print(mytrie.count(['र्']))

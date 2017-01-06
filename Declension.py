@@ -7,7 +7,9 @@ for e.g.'गुरु'is male and ['गुरु'='ग्'+ 'उ'+ 'र'+ 'उ']
 """
 from cltk.stem.sanskrit.indian_syllabifier import Syllabifier
 import cltk.corpus.sanskrit.alphabet
+from words_tagging import *
 from Tokenize import *
+from Declension_noun_forms import *
 lang='hindi'
 h = Syllabifier(lang)
 
@@ -56,86 +58,7 @@ class Sanskrit:
 These are different forms(sequence of suffixes) to which any noun word belongs to depending on its gender and ending character.
 I will add more such forms.
 """
-a_stem_masculine=[['अः','औ','आः'],
-              ['अम्','औ','आन्'],
-              ['एन','आभ्याम्','ऐः'],
-              ['आय','आभ्याम्','एभ्यः'],
-              ['आत्','आभ्याम्','एभ्यः'],
-              ['अस्य','अयोः','आनाम्'],
-              ['ए','अयोः','एषु'],
-              ['अ','औ','आः']]
-        
-i_stem_masculine=[['इः','ई','अयः'],
-              ['इम्','ई','ईन्'],
-              ['इना','इभ्याम्','इभिः'],
-              ['अये','इभ्याम्','इभ्यः'],
-              ['एः','इभ्याम्','इभ्यः'],
-              ['एः','योः','ईनाम्'],
-              ['औ','योः','इषु'],
-              ['ए','ई','अयः']]
-              
-u_stem_masculine=[['उः','ऊ','अवः'],
-              ['उम्','ऊ','ऊन्'],
-              ['उना','उभ्याम्','उभिः'],
-              ['अवे','उभ्याम्','उभ्यः'],
-              ['ओः','उभ्याम्','उभ्यः'],
-              ['ओः','वोः','ऊनाम्'],
-              ['औ','वोः','उषु'],
-              ['ओ','ऊ','अवः']]
-             
-r_stem_masculine=[['आ','अरौ','अरः'],
-                  ['अरम्','अरौ','ऋन्'],
-                  ['रा','ऋभ्याम्','ऋभिः'],
-                  ['रे','ऋभ्याम्','ऋभ्यः'],
-                  ['उः','ऋभ्याम्','ऋभ्यः'],
-                  ['उः','रोः','ऋणाम्'],
-                  ['अरि','रोः','ऋषु'],
-                  ['अ','अरौ','अर']]
-                
-o_stem_masculine=[['औः','आवो','आवः'],
-                 ['आम्','आवो','आः'],
-                 ['अवा','ओभ्याम्','औभिः'],
-                 ['अवे','ओभ्याम्','ओभ्यः'],
-                 ['ओः','ओभ्याम्','ओभ्यः'],
-                 ['ओः','अवोः','अवाम्'],
-                 ['अवि','अवोः','ओषु'],
-                 ['औः' 'आवो' 'आवः']]
-                 
-a_stem_feminine=[['आ','ए','आः'],
-                 ['आम्','ए','आः'],
-                 ['अया','आभ्याम्','आभिः'],
-                 ['आयै','आभ्याम्','आभ्यः'],
-                 ['आयाः','आभ्याम्','आभ्यः'],
-                 ['आयाः','अयोः','आनाम्'],
-                 ['आयाम्','अयोः','आसु'],
-                 ['ए','ए', 'आः']]
-                 
-i_stem_feminine=[['इः','ई','अयः'],
-                ['इम्','ई','ईः'],
-                ['या','इभ्याम्','इभिः'],
-                ['यै','इभ्याम्','इभ्यः'],
-                ['याः','इभ्याम्','इभ्यः'],
-                ['याः','योः','ईनाम्'],
-                ['याम्','योः','इषु'],
-                ['ए','ई','अयः']]
-                
-ii_stem_feminine=[['ई','यौः','यः'],
-                 ['ईम्','यौः','ईः'],
-                 ['या', 'ईभ्याम्','ईभिः'],
-                 ['यै','ईभ्याम्','ईभ्यः'],
-                 ['याः','ईभ्याम्','ईभ्यः'],
-                 ['याः','योः','ईनाम्'],
-                 ['याम्','योः','ईषु'],
-                 ['इ','यौ','यः']]
-                 
-a_stem_neuter=[['अम्','ए','आनि'],
-                ['अम्','ए','आनि'],
-                ['एन','आभ्याम्','ऐः'],
-                ['आय','आभ्याम्','एभ्यः'],
-                ['आत्','आभ्याम्','एभ्यः'],
-                ['अस्य','अयोः','आनाम्'],
-                ['ए','अयोः','एषु'],
-                ['अ','औ','आः']]
+
                  
 tat_masculine=[['सः','तौ','ते'],
           ['तम्','तौ','तान्'],
@@ -286,7 +209,37 @@ sarv_masculine=[['सर्वम्','सर्वे','सर्वाणि']
                 ['सर्वस्मै','सर्वाभ्य़ाम्','सर्वेभ्यः'],
                 ['सर्वस्मात्','सर्वाभ्याम्','सर्वेभ्यः'],
                 ['सर्वस्य','सर्वयोः','सर्वेषाम्'],
-                ['सर्वस्मिन्','सर्वयोः','सर्वेषु']]               
+                ['सर्वस्मिन्','सर्वयोः','सर्वेषु']]  
+                
+def Declension(word):
+    
+    for i in range(len(all_noun)):
+        for stem_type in all_noun[i]:
+            if word == stem_type:
+                stem_t=dict_noun[i]
+                break;
+   # print(stem_t)
+    w=complete_tokenize(word)
+    w2=w[:len(w)-1]
+    w2.append('अ')
+    #print(w,w2)
+    w3=join(w2)
+    w4=Sanskrit(w3) 
+   # print(w3)
+    decl=[]         
+#    for i in range(8):
+#        for j in range(3):
+#            if i==7:
+#                print('हे', end =' ')
+#            print((w4+Sanskrit(eval(stem_t)[i][j])),end='   ')
+#        print('\n')
+    for i in range(8):
+        case=[]
+        for j in range(3):
+            case.append(w4+Sanskrit(eval(stem_t)[i][j]))
+        decl.append(case)
+        
+    return decl
 def Declension_noun(word,gender):
     w=complete_tokenize(word)
     w2=w[:len(w)-1]
@@ -316,7 +269,7 @@ if __name__ == '__main__':
     Declension_noun('साधु','masculine')
     
     print("Declension of 'पितृ':")
-    Declension_noun('पितृ','masculine')
+#    Declension_noun('पितृ','masculine')
     
     print("Declension of 'बालिका':")
     Declension_noun('बालिका','feminine')
@@ -330,4 +283,5 @@ if __name__ == '__main__':
     print("Declension of 'फल':")
     Declension_noun('फल','neuter')
     
+   
     """ This is just illustration , presently it works for akarant_male words """

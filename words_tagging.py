@@ -36,6 +36,9 @@ t_stem_masculine=['भगवत्','भवत्','गतवत्']
 s_stem_masculine=['विद्वस्','चन्द्रमस्']
 t_stem_feminine=['सरित्']
 c_stem_feminine=['वाच्']
+sh_stem_feminine=['दिश्']
+h_stem_feminine=['उपानह्']
+dh_stem_feminine=['क्षुध्']
 t_stem_neuter=['जगत्']
 s_stem_neuter=['पयस्']
 
@@ -43,7 +46,31 @@ s_stem_neuter=['पयस्']
 all_noun=[a_stem_masculine,i_stem_masculine,u_stem_masculine,r_stem_masculine,o_stem_masculine,
           a_stem_feminine,i_stem_feminine,ii_stem_feminine,u_stem_feminine,uu_stem_feminine,r_stem_feminine,oo_stem_feminine,
           a_stem_neuter,i_stem_neuter,u_stem_neuter,r_stem_neuter,
-          n_stem_masculine,t_stem_masculine,s_stem_masculine,t_stem_feminine,c_stem_feminine,t_stem_neuter,s_stem_neuter]
-all_noun=list(itertools.chain(*all_noun))
-
+          n_stem_masculine,t_stem_masculine,s_stem_masculine,t_stem_feminine,c_stem_feminine,sh_stem_feminine,h_stem_feminine,dh_stem_feminine,t_stem_neuter,s_stem_neuter]
+dict_noun={0:'a_stem_masculine',
+           1:'i_stem_masculine',
+           2:'u_stem_masculine',
+           3:'r_stem_masculine',
+           4:'o_stem_masculine',
+           5:'a_stem_feminine',
+           6:'i_stem_feminine',
+           7:'ii_stem_feminine',
+           8:'u_stem_feminine',
+           9:'uu_stem_feminine',
+           10:'r_stem_feminine',
+           11:'oo_stem_feminine',
+           12:'a_stem_neuter',
+           13:'i_stem_neuter',
+           14:'u_stem_neuter',
+           15:'r_stem_neuter',
+           16:'n_stem_masculine',
+           17:'t_stem_masculine',
+           18:'s_stem_masculine',
+           19:'t_stem_feminine',
+           20:'c_stem_feminine',
+           21:'sh_stem_feminine',
+           22:'h_stem_feminine',
+           23:'dh_stem_feminine',
+           24:'t_stem_neuter',
+           25:'s_stem_neuter'}
 pronoun=['अस्मद्','युष्मद्','यत्','तत्','एतत्','किम्','भवत्','सर्व','इदम्']

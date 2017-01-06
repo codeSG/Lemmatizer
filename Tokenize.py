@@ -8,15 +8,18 @@ import itertools
 lang='hindi'
 h = Syllabifier(lang)
 
-CONSONANT=[CONSONANT_GUTTURALS,
-               CONSONANT_PALATALS,
-               CONSONANT_CEREBRALS,
-               CONSONANT_DENTALS,
-               CONSONANT_LABIALS,
-               SEMIVOWEL_CONSONANT, 
-               SIBILANT_CONSONANT,
-               SONANT_ASPIRATE ]
-CONSONANT  = list(itertools.chain(*CONSONANT))
+CHAR=[INDEPENDENT_VOWELS_SIMPLE,
+      INDEPENDENT_VOWELS_DIPTHONGS,
+      INDEPENDENT_VOWELS,
+      CONSONANT_GUTTURALS,
+      CONSONANT_PALATALS,
+      CONSONANT_CEREBRALS,
+      CONSONANT_DENTALS,
+      CONSONANT_LABIALS,
+      SEMIVOWEL_CONSONANT, 
+      SIBILANT_CONSONANT,
+      SONANT_ASPIRATE ]
+CHAR  = list(itertools.chain(*CHAR))
 matraa_to_vowel={'':'अ' , 'ा':'आ' ,'ि':'इ', 'ी':'ई', 'ु':'उ', 'ू':'ऊ','े':'ए' , 'ै':'ऐ' , 'ो':'ओ', 'ौ':'औ', 'ृ':'ऋ', 'ं':'अं','ः':'अः'}
 vowel_to_matraa={'अ':'','आ' : 'ा','इ':'ि','ई':'ी','उ':'ु','ऊ':'ू','ए':'े','ऐ':'ै','ओ':'ो','औ':'ौ','ऋ':'ृ','अं':'ं','अः':'ः'}
         
@@ -32,7 +35,7 @@ def complete_tokenize(word):
     for i in word_list:
         i=list(itertools.chain(*i))
         if len(i)==1:
-            if i[0] in CONSONANT:
+            if i[0] in CHAR:
                 tokened_list.append(i[0]+'्')
                 tokened_list.append('अ')
             else:
@@ -40,10 +43,10 @@ def complete_tokenize(word):
         else:
             for j in range(len(i)):
                 token=i[j]
-                if token in CONSONANT and j==len(i)-1:
+                if token in CHAR and j==len(i)-1:
                     tokened_list.append(token+'्')
                     tokened_list.append('अ')
-                elif token in CONSONANT:
+                elif token in CHAR:
                     tokened_list.append(token+'्')
                 elif token in matraa_to_vowel.keys():
                     tokened_list.append(matraa_to_vowel[token])
@@ -54,15 +57,16 @@ def stem_class(word):
     lis=complete_tokenize(word)
     length=len(lis)
     ch=lis[length-1]
-    ch_to_stem={'अ':'a_stem_','इ':'i_stem_','उ':'u_stem_','आ':'a_stem_','ई':'ii_stem_','ऊ':'uu_stem_','ओ':'o_stem_','औ':'oo_stem_','ऋ':'r_stem_','न्':'n_stem_','त्':'t_stem_','स्':'s_stem_','च्':'c_stem_'}
+    
+    ch_to_stem={'अ':'a_stem_','इ':'i_stem_','उ':'u_stem_','आ':'a_stem_','ई':'ii_stem_','ऊ':'uu_stem_','ओ':'o_stem_','औ':'oo_stem_','ऋ':'r_stem_','न्':'n_stem_','त्':'t_stem_','स्':'s_stem_','च्':'c_stem_','ध्':'dh_stem_','श्':'sh_stem_','ह्':'h_stem_'}
     if ch in ch_to_stem.keys():
         return ch_to_stem[ch]
     
     
 def join(list_char):
     word=''
-    CONSONANT_HALANTA = [x+'्' for x in CONSONANT]
-    CONS_TO_CONS=dict(zip(CONSONANT_HALANTA, CONSONANT))
+    CONSONANT_HALANTA = [x+'्' for x in CHAR]
+    CONS_TO_CONS=dict(zip(CONSONANT_HALANTA, CHAR))
     length=len(list_char)
     
     for i in range(length):
