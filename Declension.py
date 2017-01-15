@@ -133,29 +133,26 @@ def Declension(word,gender):
 
         
 if __name__ == '__main__':
-    print("Declension of 'बालक':")
+    print("Declension of 'क्षुध्':")
     print(Declension_noun('क्षुध्'))
     
     print("Declension of 'कवि':")
-    Declension_noun('कवि')
+    print(Declension_noun('कवि'))
     
     print("Declension of 'साधु':")
-    Declension_noun('साधु')
-    
-    print("Declension of 'पितृ':")
-#    Declension_noun('पितृ','masculine')
+    print(Declension_noun('साधु'))
     
     print("Declension of 'बालिका':")
-    Declension_noun('बालिका')
+    print(Declension_noun('बालिका'))
     
     print("Declension of 'मति':")
-    Declension_noun('मति')
+    print(Declension_noun('मति'))
     
     print("Declension of 'नदी':")
-    Declension('नदी','feminine')
+    print(Declension('नदी','feminine'))
     
     print("Declension of 'फल':")
-    Declension('फल','neuter')
+    print(Declension('फल','neuter'))
     
     Declension_pronoun('युष्मद्')
     """ This is just illustration , presently it works for akarant_male words """

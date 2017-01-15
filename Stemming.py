@@ -2,7 +2,7 @@
 """
 Created on Fri Dec 30 09:11:08 2016
 
-@author: user
+@author:sourabh garg
 """
 
 from Declension import *
@@ -68,10 +68,8 @@ def stem(word):
                 return joined_word
         #print("   \n")
         
-#print(stem1('प्रीत्योः'))
-print(Declension_noun('फल') ) 
-print(search_noun('नद्योः','नदी'))     
-print(stem('क्षु्द्भ्यः'))    
-#if __name__ == '__main__':
-#    print(stem1('प्रीत्योः'))
-#    print(stem1('नद्योः'))
+   
+if __name__ == '__main__':
+    print(Declension_noun('फल') ) 
+    print(search_noun('नद्योः','नदी'))     
+    print(stem('क्षु्द्भ्यः')) 

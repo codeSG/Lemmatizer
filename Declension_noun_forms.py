@@ -2,7 +2,7 @@
 """
 Created on Thu Jan  5 08:56:21 2017
 
-@author: user
+@author:sourabh
 """
 
 a_stem_masculine=[['अः','औ','आः'],
