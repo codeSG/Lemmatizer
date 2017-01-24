@@ -101,20 +101,39 @@ def Declension_pronoun(word,gender=''):
     if word in pronoun:
         string=word+"_"+gender
         try:
-            print(eval(string))
+            return(eval(string))
         except:
-            print(eval(word))
+            return(eval(word))
             
-def Declension(word,gender):
+def Declension(word,gender=''):
     if word in pronoun:
         string=word+"_"+gender
         try:
-            print(eval(string))
+            dec=eval(string)
         except:
-            print(eval(word))
+            dec=eval(word)
+        for i in range(7):
+            for j in range(3):
+                print(dec[i][j],end='   ')
+            print('\n')
     elif word in unique: 
-        print(eval(word))
+        dec=eval(word)
+        for i in range(8):
+            for j in range(3):
+                if i==7:
+                    print('हे', end =' ')
+                print(dec[i][j],end='   ')
+            print('\n')
+#    elif Declension_noun(word):
+#        dec=Declension_noun(word)
+#        for i in range(8):
+#            for j in range(3):
+#                if i==7:
+#                    print('हे', end =' ')
+#                print(dec[i][j],end='   ')
+#            print('\n')
     else:
+        
         w=complete_tokenize(word)
         w2=w[:len(w)-1]
         w2.append('अ')
@@ -124,35 +143,27 @@ def Declension(word,gender):
         s=stem_class(word)
         s=s+gender
         #print(s)
-        for i in range(8):
-            for j in range(3):
-                if i==7:
-                    print('हे', end =' ')
-                print((w4+Sanskrit(eval(s)[i][j])),end='   ')
-            print('\n')
+        try:
+            for i in range(8):
+                for j in range(3):
+                    if i==7:
+                        print('हे', end =' ')
+                    print((w4+Sanskrit(eval(s)[i][j])),end='   ')
+                print('\n')
+        except:
+            s=s+"_1"
+            #print("i")
+            for i in range(8):
+                for j in range(3):
+                    if i==7:
+                        print('हे', end =' ')
+                    print((w4+Sanskrit(eval(s)[i][j])),end='   ')
+                print('\n')
+            
 
         
 if __name__ == '__main__':
     print("Declension of 'क्षुध्':")
-    print(Declension_noun('क्षुध्'))
-    
-    print("Declension of 'कवि':")
-    print(Declension_noun('कवि'))
-    
-    print("Declension of 'साधु':")
-    print(Declension_noun('साधु'))
-    
-    print("Declension of 'बालिका':")
-    print(Declension_noun('बालिका'))
-    
-    print("Declension of 'मति':")
-    print(Declension_noun('मति'))
-    
-    print("Declension of 'नदी':")
-    print(Declension('नदी','feminine'))
-    
-    print("Declension of 'फल':")
-    print(Declension('फल','neuter'))
-    
-    Declension_pronoun('युष्मद्')
-    """ This is just illustration , presently it works for akarant_male words """
+    Declension('क्षुध्','feminine')
+   
+   

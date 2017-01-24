@@ -167,3 +167,23 @@ from words_tagging import *
                 ['सर्वस्य','सर्वयोः','सर्वेषाम्'],
                 ['सर्वस्मिन्','सर्वयोः','सर्वेषु']]  
       
+#all_pronoun=[तत्_masculine,
+#             तत्_feminine
+#             तत्_neuter,
+#             एतत्_masculine,
+#             एतत्_feminine,
+#             एतत्_neuter ,
+#             अस्मद्,
+#             युष्मद्,
+#             किम्_masculine,
+#             किम्_feminine,
+#             किम्_neuter,
+#             इदम्_masculine,
+#             इदम्_feminine,
+#             इदम्_neuter ,
+#             भवत्_masculine,
+#             भवत्_feminine ,
+#             भवत्_neuter,
+#             सर्व_masculine, 
+#             सर्व_feminine,
+#             सर्व_neuter]
