@@ -11,6 +11,7 @@ from Declension_pronoun import *
 from words_tagging import *
 from Tokenize import *
 from Declension_noun_forms import *
+from Sandhi import *
 lang='hindi'
 h = Syllabifier(lang)
 
@@ -23,6 +24,11 @@ class Sanskrit:
         return self.charac
         
     def __add__(self,vow):
+        s,v=rule(self.charac,vow.charac)
+        self=Sanskrit(s)
+        vow=Sanskrit(v)
+        
+
         ch=''
         self_first, self_last=Sanskrit.last(self)
         vow_first,vow_last =Sanskrit.first(vow)
@@ -30,7 +36,12 @@ class Sanskrit:
         if vow_first in vowel_to_matraa.keys():
             ch= self_last+vowel_to_matraa[vow_first]
         else:
-            self_last=self_last+'्'
+            self.charac=self.charac+'्'
+            s,v=rule2(self.charac,vow.charac)
+            self=Sanskrit(s)
+            vow=Sanskrit(v)
+            self_first, self_last=Sanskrit.last(self)
+            vow_first,vow_last =Sanskrit.first(vow)
             ch=self_last+vow_first
                 
         return self_first+ch+vow_last
@@ -165,5 +176,8 @@ def Declension(word,gender=''):
 if __name__ == '__main__':
     print("Declension of 'क्षुध्':")
     Declension('क्षुध्','feminine')
-   
+    print("Declension of 'राम':")
+    Declension('राम','masculine')
+    print("Declension of 'राजन्':")
+    Declension('राजन्','masculine')
    
