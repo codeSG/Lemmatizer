@@ -24,11 +24,6 @@ class Sanskrit:
         return self.charac
         
     def __add__(self,vow):
-        s,v=rule(self.charac,vow.charac)
-        self=Sanskrit(s)
-        vow=Sanskrit(v)
-        
-
         ch=''
         self_first, self_last=Sanskrit.last(self)
         vow_first,vow_last =Sanskrit.first(vow)
@@ -36,10 +31,11 @@ class Sanskrit:
         if vow_first in vowel_to_matraa.keys():
             ch= self_last+vowel_to_matraa[vow_first]
         else:
-            self.charac=self.charac+'्'
-            s,v=rule2(self.charac,vow.charac)
+         
+            s,v=rule2(self.charac+'्',vow.charac)
             self=Sanskrit(s)
             vow=Sanskrit(v)
+            
             self_first, self_last=Sanskrit.last(self)
             vow_first,vow_last =Sanskrit.first(vow)
             ch=self_last+vow_first
@@ -117,6 +113,7 @@ def Declension_pronoun(word,gender=''):
             return(eval(word))
             
 def Declension(word,gender=''):
+    cases=['प्रथमा','द्वितीया','तृतीया','चर्तुथी','पन्चमी','षष्ठी','सप्तमी','सम्बोधन']
     if word in pronoun:
         string=word+"_"+gender
         try:
@@ -157,18 +154,26 @@ def Declension(word,gender=''):
         try:
             for i in range(8):
                 for j in range(3):
+                    st=eval(s)[i][j]
+                    if (i==2 and j==0) or (i==5 and j==2):
+                        w,st=rule(w4.charac,st)
+                        w4=Sanskrit(w)
                     if i==7:
                         print('हे', end =' ')
-                    print((w4+Sanskrit(eval(s)[i][j])),end='   ')
+                    print((w4+Sanskrit(st)),end='   ')
                 print('\n')
         except:
             s=s+"_1"
             #print("i")
             for i in range(8):
                 for j in range(3):
+                    st=eval(s)[i][j]
+                    if (i==2 and j==0) or (i==5 and j==2):
+                        w,st=rule(w4.charac,st)
+                        w4=Sanskrit(w)
                     if i==7:
                         print('हे', end =' ')
-                    print((w4+Sanskrit(eval(s)[i][j])),end='   ')
+                    print((w4+Sanskrit(st)),end='   ')
                 print('\n')
             
 

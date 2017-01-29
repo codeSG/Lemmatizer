@@ -35,10 +35,11 @@ def rule(first,sec):
 print(rule('राम','आनाम्'))
 
 def rule2(first,sec):
-    
+    #print(first, sec)
     first_list=complete_tokenize(first)
     sec_list=complete_tokenize(sec)
     first_list.reverse()
+    #print(first_list,sec_list)
     listB={'स्':'श्', 'त्':'च्', 'थ्':'छ्', 'द्':'ज्', 'ध्':'झ्', 'न्':'ञ्'}
     if sec_list[0] in listB.keys() and first_list[0] in listB.values():
         sec_list[0]=listB[sec_list[0]]
@@ -46,10 +47,10 @@ def rule2(first,sec):
         first_list[0]=listB[first_list[0]]
 
     first_list.reverse()
-   
+    #print(first_list,sec_list)
     s=join(first_list)
     v=join(sec_list)
-    
+    #print(s,v)
     return s,v
     
-print(rule2('राज्','ने '))
+print(rule2('राज्','नभिः '))

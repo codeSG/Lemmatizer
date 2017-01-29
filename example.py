@@ -2,21 +2,27 @@
 """
 @author: sourabh garg
 """
-from Declension import *
-from Stemming import *
+from Declension import Declension
 
-print("Declension of 'क्षुध्':")
-Declension('क्षुध्','feminine')
+
+print("Declension of 'नदी':")
+Declension('नदी','feminine')
 
 print("Declension of 'पोतृ':")
 Declension('पोतृ','masculine')
 
 print("Declension of 'युष्मद्':")
-Declension('युष्मद्')
+Declension('युष्मद्')   # no gender required
+
+
+print("Declension of 'तत्':")
+Declension('तत्','neuter') 
 
 print("Declension of 'विद्वस्':")
 Declension('विद्वस्','masculine')
 
+
+from Stemming import stem
 print(stem('क्षु्त्सु'))
 print(stem('युष्मान्'))
 print(stem('पोत्रोः'))
