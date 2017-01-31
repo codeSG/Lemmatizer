@@ -12,6 +12,7 @@ from Trie import *
 from Tokenize import *
 
 def search_noun(word,noun):
+    ''' Searches word in the declension of the noun'''
     declension=Declension_noun(noun)
     #print(declension)
     for case in declension:
@@ -20,6 +21,7 @@ def search_noun(word,noun):
                 return True
 
 def search_pronoun(word):
+    ''' Searches word in the declension of the pronoun'''
     for pro in pronoun:
         declension=Declension_pronoun(pro,'masculine')
         for case in declension:
@@ -37,6 +39,7 @@ def search_pronoun(word):
                 if word==number:
                     return pro
 def search_unique(word):
+    ''' Searches word in the declension of the unique noun words'''
     for u in unique:
         declension=eval(u)
         for case in declension:
@@ -51,7 +54,7 @@ def find_stem(word):
             return stem_t
             
 def stem(word):
-    
+    '''it returns the stem for any inflected word provided'''
     if search_pronoun(word) != None:
         return search_pronoun(word)
     elif search_unique(word)!=None:
@@ -79,6 +82,7 @@ def stem(word):
         #print("   \n")
 
 def case_number(word,lang):
+    '''it returns the case and number of the inflected word provided, by lookup in its declension '''
     s=stem(word)
     cases_e=['Nominative', 'Accusative', 'Instrumental', 'Dative', 'Ablative', 'Genitive', 'Locative' ,'Vocative']
     numbers_e=['Singular', 'Dual', 'Plural']

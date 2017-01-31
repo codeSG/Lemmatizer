@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
 """
-Created on Thu Jan  5 08:56:21 2017
-
 @author:sourabh
 """
 
+"""
+These are different forms(sequence of suffixes) to which any noun word belongs to depending on its gender and ending character.
+
+"""
 a_stem_masculine=[['अः','औ','आः'],
               ['अम्','औ','आन्'],
               ['एन','आभ्याम्','ऐः'],
@@ -310,6 +311,9 @@ t_stem_neuter=[['अत्','अती','अन्ति'],
                ['अतः','अतोः','अताम्'],
                ['अति','अतोः','अत्सु'],
                ['अत्','अती','अन्ति']]
+               
+               
+''' These are some unique words , whose declension are different from rest of the words of their type'''
 
 सम्राज्=[['सम्राट्','सम्राजौ','सन्राजः'],
       ['सम्राजम्','सम्राजौ','सम्राजः'],
@@ -328,7 +332,6 @@ t_stem_neuter=[['अत्','अती','अन्ति'],
        ['पथः','पथोः','पथाम्'],
        ['पथि','पथोः','पथिषु'],
        ['पन्थाः','पन्थानौ','पन्थानः']]
-       
        
 विद्वस्=[['विद्वान्','विद्वांसौ','विद्वासः'],
          ['विद्वासम्','विद्वांसौ','विदुषः'],

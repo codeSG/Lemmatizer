@@ -1,12 +1,16 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jan 28 15:40:26 2017
 
+"""
 @author: user
 """
-
+'''It contains the sandhi rules which are to be applied to concatenate two sanskrit words
+   Presently, it don't contains all rules, I will add them in some time
+'''
 from Tokenize import *
+
 def rule(first,sec):
+    ''' if 'न्' is there in sec , it got converted to 'ण्' , if there exist 'र्' or 'ष्' or'ऋ' in first,
+        where elements of listA can be present in between them.
+    '''
     listA=['','अ','आ' ,'इ','ई','उ','ऊ','ए','ऐ','ओ','औ','अं','अः','ह्','य्','व्','न्','क्','ख्','ग्','घ्','ङ्','प्','फ्','ब्','भ्','म्']
     alphabet=[CONSONANT_GUTTURALS,CONSONANT_PALATALS,CONSONANT_CEREBRALS,CONSONANT_DENTALS,CONSONANT_LABIALS,SEMIVOWEL_CONSONANT, SIBILANT_CONSONANT,SONANT_ASPIRATE ]
     alphabet= list(itertools.chain(*alphabet))
@@ -32,9 +36,12 @@ def rule(first,sec):
     s=join(sec_n)
     return f,s
     
-print(rule('राम','आनाम्'))
+
 
 def rule2(first,sec):
+    ''' suchtiv sandhi:  {'स्', 'त्', 'थ्', 'द्', 'ध्', 'न्'} converts to {'श्','च्', 'छ्','ज्', 'झ्', 'ञ्'} respectively ,
+        if element of first list comes in any of the two words, and elemnt from second list comes in the other word
+    '''
     #print(first, sec)
     first_list=complete_tokenize(first)
     sec_list=complete_tokenize(sec)
@@ -53,4 +60,6 @@ def rule2(first,sec):
     #print(s,v)
     return s,v
     
-print(rule2('राज्','नभिः '))
+if __name__ == '__main__':
+    print(rule('राम','आनाम्'))
+    print(rule2('राज्','नभिः '))

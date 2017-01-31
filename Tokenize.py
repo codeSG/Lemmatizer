@@ -74,6 +74,7 @@ def stem_class(word):
     
 
 def join(list_char):
+    ''' It joins the complete tokenized word'''
     word=''
     CONSONANT_HALANTA = [x+'्' for x in CHAR]
     CONS_TO_CONS=dict(zip(CONSONANT_HALANTA, CHAR))
@@ -101,7 +102,7 @@ if __name__ == '__main__':
        'उत्कंठा','कुत्ता','मत्था','उत्फुल्ल','उत्पत्ति','नृत्य','जिद्दी','सिद्धि','कर्तृणी','विद्यार्थी','द्रवित','द्वारा','द्वेष','आँध्र','संध्या','सिंह','सींग','महन्त','मन्दाकिनी','धन्धा','प्रसन्न','उन्मूलन','अन्य','कन्हैया',
        'गुप्त','ठप्पा','प्यास','प्रणाम','हफ्ता','जब्त','कब्ज','ब्रिटिश','भ्लेच्छ','सहस्र','सहस्त्र','ह्रस्व','आर्य','चक्र','क्षत्रिय','दण्डिन्','राम','नृप','ग्राम','पुत्र','सूर्य','चन्द्र','शिष्य']
     print(complete_tokenize('नः'))
-       #    for i in words:
-#        print(i,complete_tokenize(i))
+    for i in words:
+        print(i,complete_tokenize(i))
     print(stem_class('दण्डिन्'))
     print(join(['भ्', 'ल्', 'ए', 'च्', 'छ्']))

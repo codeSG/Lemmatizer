@@ -2,8 +2,8 @@
 @author: sourabh garg
 """
 """
-It contains different forms of declension  
-for e.g.'गुरु'is male and ['गुरु'='ग्'+ 'उ'+ 'र'+ 'उ'] ends with 'उ' means it belongs to ukarant_male declensiontype
+It produces Declension table for any noun/ pronoun depending on its gender and ending character
+for e.g.'गुरु'is male and ['गुरु'='ग्'+ 'उ'+ 'र'+ 'उ'] ends with 'उ' means it belongs to ustem_masculine declensiontype
 """
 from cltk.stem.sanskrit.indian_syllabifier import Syllabifier
 import cltk.corpus.sanskrit.alphabet
@@ -24,6 +24,7 @@ class Sanskrit:
         return self.charac
         
     def __add__(self,vow):
+        '''It employs basic concatenation of two sanskrit string applying some sandhi rules'''
         ch=''
         self_first, self_last=Sanskrit.last(self)
         vow_first,vow_last =Sanskrit.first(vow)
@@ -42,12 +43,9 @@ class Sanskrit:
                 
         return self_first+ch+vow_last
           
-    """
-    __add__ is a method for most basic sandhi rules
-    last is a method to extract the last syllable
-    first is a method to extract the first syllable
-    """
+   
     def last(self):
+        ''' It extract last syallable of the word seperate from rest of the word'''
         w=''
         current = h.orthographic_syllabify(self.charac)
         for i in range(len(current)-1):
@@ -55,6 +53,7 @@ class Sanskrit:
         return w,current[len(current)-1]
 
     def first(self):
+        ''' It extract first syallable of the word seperate from rest of the word'''
         w=''
         current = h.orthographic_syllabify(self.charac)
         i=1
@@ -62,11 +61,9 @@ class Sanskrit:
             w+=current[i]
         return current[0],w
 
-"""
-These are different forms(sequence of suffixes) to which any noun word belongs to depending on its gender and ending character.
-I will add more such forms.
-"""
+
 def find_stem(word):
+    ''' It returns the declension type which is to be apply on the word'''
     for i in range(len(all_noun)):
             for stem_type in all_noun[i]:
                 if word == stem_type:
@@ -76,6 +73,7 @@ def find_stem(word):
                     
                     
 def Declension_noun(word):
+    ''' It returns the declension of words which are present in our database, without taking its gender'''
     stem_t=''
     if word in unique:
         return eval(word)
@@ -105,6 +103,7 @@ def Declension_noun(word):
         return decl
 
 def Declension_pronoun(word,gender=''):
+    ''' It returns the declension of pronoun words, gender is second argument to it(if words is independent of gender like 'युष्मद्' ,then it can be skipped'''
     if word in pronoun:
         string=word+"_"+gender
         try:
@@ -113,6 +112,7 @@ def Declension_pronoun(word,gender=''):
             return(eval(word))
             
 def Declension(word,gender=''):
+    ''' It is the main method which produce Declension of any word(noun or pronoun)'''
     cases=['प्रथमा','द्वितीया','तृतीया','चर्तुथी','पन्चमी','षष्ठी','सप्तमी','सम्बोधन']
     if word in pronoun:
         string=word+"_"+gender
