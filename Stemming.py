@@ -77,10 +77,52 @@ def stem(word):
                     found=True
                     return joined_word
         #print("   \n")
-            
+
+def case_number(word,lang):
+    s=stem(word)
+    cases_e=['Nominative', 'Accusative', 'Instrumental', 'Dative', 'Ablative', 'Genitive', 'Locative' ,'Vocative']
+    numbers_e=['Singular', 'Dual', 'Plural']
+    cases_h=['प्रथमा','द्वितीया','तृतीया','चर्तुथी','पन्चमी','षष्ठी','सप्तमी','सम्बोधन']
+    numbers_h=['एकवचन','द्विवचन','बहुवचन']
+    if lang=='hi':
+        cases=cases_h
+        numbers=numbers_h
+    elif lang== 'eng':
+        cases=cases_e
+        numbers=numbers_e
+    if search_pronoun(word) != None:
+        d=Declension_pronoun(s,'masculine')
+        for i in range(7):
+            for j in range(3):
+                if d[i][j]==word:
+                    return cases[i],numbers[j]
+        d=Declension_pronoun(s,'feminine')
+        for i in range(7):
+            for j in range(3):
+                if d[i][j]==word:
+                    return cases[i],numbers[j]
+        d=Declension_pronoun(s,'neuter')
+        for i in range(7):
+            for j in range(3):
+                if d[i][j]==word:
+                    return cases[i],numbers[j]
+        
+    elif search_unique(word)!=None:
+        d=eval(s)
+        for i in range(8):
+            for j in range(3):
+                if d[i][j]==word:
+                    return cases[i],numbers[j]
+    else:
+        d=Declension_noun(s)
+        for i in range(8):
+            for j in range(3):
+                if d[i][j]==word:
+                    return cases[i],numbers[j]
+
    
 if __name__ == '__main__':
 #    print(search_noun('नद्योः','नदी'))    
 #    find_stem('कर्तृ')
-    print(stem('फलम्'))
-    print(stem('सर्वासु')) 
+    print(case_number('राज्ञे','hi'))
+    print(case_number('विद्वांसौ','eng')) 
