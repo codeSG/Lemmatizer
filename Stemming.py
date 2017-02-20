@@ -9,7 +9,10 @@ from Declension import Declension_noun
 from Tokenize import complete_tokenize,join
 
 def search_noun(word,noun):
-    ''' Searches word in the declension of the noun'''
+    ''' 
+    This function search the word in the declension of the noun word,
+    if the word exist in it, then it returns True. 
+    '''
     dec=Declension_noun(noun)
     for row in dec:
         for col in row:
@@ -19,7 +22,14 @@ def search_noun(word,noun):
 
         
 def stem(word):
-    '''it returns the stem for any inflected word provided'''
+    """
+    It inputs an inflected word and outputs the stem for that inflected word provided.
+    In this function, first we make a trie of all available noun words,
+    then taking tokenization of the inflected word and find any possible 
+    match in the trie, if it found an exact match in the declension of that 
+    matched noun word,then it would be our stem, else it would truncate 
+    the word and repeat the above step, until we get our desired result. 
+    """
     mytrie=Trie.Trie()
     for stem_cls in words_tagging.all_noun:
         for noun in stem_cls:

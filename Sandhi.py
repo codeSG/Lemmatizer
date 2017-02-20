@@ -2,8 +2,8 @@
 """
 @author: user
 """
-'''It contains the sandhi rules which are to be applied to concatenate two sanskrit words
-   Presently, it don't contains all rules, I will add them in some time
+'''
+It contains the sandhi rules which are to be applied to concatenate two sanskrit words
 '''
 from Tokenize import complete_tokenize, join
 from cltk.corpus.sanskrit.alphabet import *
@@ -22,6 +22,15 @@ def sandhi(first,second):
         return rule0(first,second)
         
 def rule0(first,second):
+    """
+    It contains swar sandhi(स्वर सन्धि)rules which is categorized as:
+       ( 1.)दीर्घ सन्धि
+       ( 2.)गुण सन्धि
+       ( 3.)वृद्धि सन्धि
+       ( 4.)यण् सन्धि
+       ( 5.) अयादि सन्धि
+    for detailed information visit: https://hi.wikipedia.org/wiki/संधि_(व्याकरण)
+    """
     f=complete_tokenize(first)
     s=complete_tokenize(second)
     f_last=f[-1]
@@ -78,8 +87,9 @@ def rule0(first,second):
 
 
 def rule1(first,second):
-    ''' suchtiv sandhi:  {'स्', 'त्', 'थ्', 'द्', 'ध्', 'न्'} converts to {'श्','च्', 'छ्','ज्', 'झ्', 'ञ्'} respectively ,
-        if element of first list comes in any of the two words, and element from second list comes in the other word at the point of concatenation
+    ''' 
+    suchtiv sandhi:  {'स्', 'त्', 'थ्', 'द्', 'ध्', 'न्'} converts to {'श्','च्', 'छ्','ज्', 'झ्', 'ञ्'} respectively ,
+    if element of first list comes in any of the two words, and element from second list comes in the other word at the point of concatenation
     '''
     f=complete_tokenize(first)
     s=complete_tokenize(second)
@@ -94,8 +104,10 @@ def rule1(first,second):
     return join(result)
     
 def rule2(first,sec):
-    ''' if 'न्' is there in sec , it got converted to 'ण्' , if there exist 'र्' or 'ष्' or'ऋ' in first,
-        where elements of listA can be present in between them.
+    '''
+    **It is a special rule**
+    If 'न्' is there in sec , it got converted to 'ण्' , if there exist 'र्' or 'ष्' or'ऋ' in first,
+    where elements of listA can be present in between them.
     '''
     listA=['','अ','आ' ,'इ','ई','उ','ऊ','ए','ऐ','ओ','औ','अं','अः','ह्','य्','व्','न्','क्','ख्','ग्','घ्','ङ्','प्','फ्','ब्','भ्','म्']
     

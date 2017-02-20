@@ -11,7 +11,9 @@ from Sandhi import sandhi
 from Declension_noun_forms import *
 
 def Declension_noun(word):
-    ''' It returns the declension of words which are present in our database, without taking its gender'''
+    ''' 
+    This function inputs only the noun word(no gender is required) present in our database,and 
+    it returns the declension of the noun word by adding suffix sequence(from Declension_noun_form module) to the noun.'''
     if word in words_tagging.unique:
         return eval(word)
     else:
@@ -40,7 +42,10 @@ def Declension_noun(word):
 
           
 def Declension(word,gender=''):
-    ''' It is the main method which produce Declension of any word(noun or pronoun)'''
+    ''' 
+    It is the main method which produce Declension of any noun word 
+    provided, its gender. 
+    '''
     cases=['प्रथमा','द्वितीया','तृतीया','चर्तुथी','पन्चमी','षष्ठी','सप्तमी','सम्बोधन']
     if word in words_tagging.unique:
         Dec=eval(word)
