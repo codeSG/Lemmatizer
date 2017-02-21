@@ -2,20 +2,20 @@
 
 
 ##About
-Stemming is a core task for NLP which relates different inflected(or sometimes derived forms of a given word to their word stem,base or root. For example, In english,A stemming algorithm reduces the words "fishing", "fished", and "fisher" to the root word, "fish"by removing the corresponding suffixes. But For highly inflected languages like *Sanskrit*, the task is even more ambiguous as words often have more than two dozen possible forms which also varies depending on gender and their ending character.
+Stemming is a core task for NLP which relates different inflected(or sometimes derived forms) of a given word to their word stem, base or root. For example, In english,A stemming algorithm reduces the words "fishing", "fished", and "fisher" to the root word, "fish" by removing the corresponding suffixes. But For highly inflected languages like *Sanskrit*, the task is even more ambiguous as words often have more than two dozen possible forms which also varies depending on various criteria like gender, their ending character etc.
 Our algorithm tags all possible inflected words to their word stem/main noun for sanskrit language.
 
 
 ##How to use?
 To use the funtionality of this stemmer , First you have to import the module named, Stemming, using the statement
-
-**In [1]:from Stemming import stem**
-
+________________________________
+In [1]:from Stemming import stem
+________________________________
 Then, there is a method called stem which takes any sanskrit inflected word(presently only for nominal class) in 'Devanagari script' and outputs its word stem .
 
-**In [2]: stem('नद्योः') **
+In [2]: stem('नद्योः') 
 
-**Out [2]: नदी **
+Out [2]: नदी 
 
 
 ##How it works?
