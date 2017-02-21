@@ -23,14 +23,15 @@ Our stemming algorithm is based on two conventional approaches searching in look
 We use a stem database (word_tagging module which contain stem words). These stems, as mentioned above, are  valid noun stem themselves. In order to stem a word the algorithm tries to match it with stems from the database, using various methods:First it complete tokenize the given inflected word as phoneme(consonants and vowel) sequence, for e.g. ['गुरवे'='ग्'+ 'उ'+ 'र'+ 'व'+'ए'].  Then, it find most likely match for it in the stem database using trie, if it found a approximate matching noun word , it searches the inflected word in its declension, if there exist an exact match, it returns the noun word as stem, otherwise it truncates the inputed word and repeat the above procedure till its actual word stem is found. 
 
 ###Lookup tables(Declension)
-Generally, A simple stemmer looks up the inflected form in a lookup table where all the inflected forms are explicitly listed, hence the table becomes large. For languages with simple morphology, like English, table sizes are modest, but highly inflected languages like Sanskrit have many potential inflected forms for each word stem.So, for this I use a production technique which produced declension table when required.For example, if the word is "'रामः'", then the Declension_noun method will automatically generate all the forms [['रामः', 'रामौ', 'रामाः'], ['रामम्', 'रामौ', 'रामाण्'], ['रामेण', 'रामाभ्याम्', 'रामैः'], ['रामाय', 'रामाभ्याम्', 'रामेभ्यः'], ['रामात्', 'रामाभ्याम्', 'रामेभ्यः'], ['रामस्य', 'रामयोः', 'रामाणाम्'], ['रामे', 'रामयोः', 'रामेषु'], ['हे राम', 'हे रामौ', 'हे रामाः']].
-for complete flow chart of the algorithm, visit [Sanskrit_Stemmer](https://github.com/codeSG/Stemmer/blob/master/Sanskrit_Stemmer.pdf)
+Generally, A simple stemmer looks up the inflected form in a lookup table where all the inflected forms are explicitly listed. For languages with simple morphology, like English, table sizes are modest, but highly inflected languages like Sanskrit have many potential inflected forms for each word stem.So, for this I use a production technique which produced declension table when required.For example, if the word is "'रामः'", then the Declension_noun method will automatically generate all the forms [['रामः', 'रामौ', 'रामाः'], ['रामम्', 'रामौ', 'रामाण्'], ['रामेण', 'रामाभ्याम्', 'रामैः'], ['रामाय', 'रामाभ्याम्', 'रामेभ्यः'], ['रामात्', 'रामाभ्याम्', 'रामेभ्यः'], ['रामस्य', 'रामयोः', 'रामाणाम्'], ['रामे', 'रामयोः', 'रामेषु'], ['हे राम', 'हे रामौ', 'हे रामाः']].
+####For Complete flow chart of the algorithm, visit [Sanskrit_Stemmer](https://github.com/codeSG/Stemmer/blob/master/Sanskrit_Stemmer.pdf)
 
 ###Supplimentary modules:
 ####Sandhi(Joint)
 
 The Sandhi module is use to concatenate two sanskrit string by applying several rules. It takes two phoneme streams (in devanagari script) and gives as result their sandhi euphonic composition.
 It presently contains:
+
 **स्वर संधि**-दो स्वरों के मेल से होने वाले विकार (परिवर्तन) को स्वर-संधि कहते हैं। जैसे - विद्या + आलय = विद्यालय।
 स्वर-संधि पाँच प्रकार की होती हैं -
 
