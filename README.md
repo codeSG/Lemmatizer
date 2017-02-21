@@ -33,7 +33,7 @@ The Sandhi module is use to concatenate two sanskrit string by applying several 
 It presently contains:
 
 **स्वर संधि**-दो स्वरों के मेल से होने वाले विकार (परिवर्तन) को स्वर-संधि कहते हैं। जैसे - विद्या + आलय = विद्यालय।
-स्वर-संधि पाँच प्रकार की होती हैं -
+स्वर-संधि पाँच प्रकार की होती हैं|
 
 1.)दीर्घ संधि
 
@@ -77,7 +77,7 @@ Out [2]: [['नाम', 'नामनी', 'नामानि'],
 ['हे नाम', 'हे नामनी', 'हे नामानि']]
 
 ##Gratitute
-I am greatly thankful to The Sankrit Heritage Site for the provided guidance.
+I am greatly thankful to The Sankrit Heritage Site for the guidance.
 
 ##Author
 * Sourabh Garg sourabh.8.june.1996@gmail.com @codeSG
