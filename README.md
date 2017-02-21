@@ -27,7 +27,7 @@ Generally, A simple stemmer looks up the inflected form in a lookup table where 
 for complete flow chart of the algorithm, visit [Sanskrit_Stemmer](https://github.com/codeSG/Stemmer/blob/master/Sanskrit_Stemmer.pdf)
 
 ###Supplimentary modules:
-######Sandhi(Joint)
+####Sandhi(Joint)
 
 The Sandhi module is use to concatenate two sanskrit string by applying several rules. It takes two phoneme streams (in devanagari script) and gives as result their sandhi euphonic composition.
 It presently contains:
@@ -50,7 +50,7 @@ In [2]: sandhi('विधु' ,'उदयः')
 
 Out [2]: विधूदयः  
 
-######Declension of any noun
+####Declension of any noun
 
 It produces Declension table for any noun/ pronoun depending on its gender and ending character.for e.g.'गुरु'is male and ['गुरु'='ग्'+ 'उ'+ 'र'+ 'उ'] ends with 'उ' means it belongs to "u_stem_m"(<stem_type>+<gender>) declension form.
 It takes noun and gender('m' for masculine, 'f' for feminine and 'n' for neuter word)as arguments and outputs its declension table where the case sequence is ['प्रथमा','द्वितीया','तृतीया','चर्तुथी','पन्चमी','षष्ठी','सप्तमी','सम्बोधन'].
