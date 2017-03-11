@@ -5,6 +5,7 @@
 
 import Trie 
 import words_tagging 
+from words_tagging import all_noun
 from Declension import Declension_noun
 from Tokenize import complete_tokenize,join
 
@@ -19,8 +20,14 @@ def search_noun(word,noun):
             if word==col:
                 return True
 
-
-        
+def initialize():
+    mytrie=Trie.Trie()
+    for stem_cls in words_tagging.all_noun:
+        for noun in stem_cls:
+            mytrie.insert(complete_tokenize(noun))
+    return mytrie
+mytrie=Trie.Trie()
+mytrie=initialize()
 def stem(word):
     """
     It inputs an inflected word and outputs the stem for that inflected word provided.
@@ -30,11 +37,7 @@ def stem(word):
     matched noun word,then it would be our stem, else it would truncate 
     the word and repeat the above step, until we get our desired result. 
     """
-    mytrie=Trie.Trie()
-    for stem_cls in words_tagging.all_noun:
-        for noun in stem_cls:
-            mytrie.insert(complete_tokenize(noun))
-            
+    
     lis=complete_tokenize(word)
     if ' ' in word:
         lis=lis[2:]   #for vocative case , as they include 'हे' at initial, while searching it must be removed
@@ -52,8 +55,12 @@ def stem(word):
             
 
 if __name__ == '__main__':
+    
     print(stem('नद्योः'))  
 
     print(stem('पोत्रोः'))
     
     print(stem('हे क्षुधः'))
+    
+            
+    
