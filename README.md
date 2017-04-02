@@ -51,7 +51,7 @@ In [2]: sandhi('विधु' ,'उदयः')
 
 Out [2]: विधूदयः  
 
-﻿#### Declension of any noun
+#### Declension of any noun
 
 It produces Declension table for any noun/ pronoun depending on its gender and ending character.for e.g.'गुरु'is male and ['गुरु'='ग्'+ 'उ'+ 'र'+ 'उ'] ends with 'उ' means it belongs to "u_stem_m"(<stem_type>+<gender>) declension form.
 It takes noun and gender('m' for masculine, 'f' for feminine and 'n' for neuter word)as arguments and outputs its declension table where the case sequence is ['प्रथमा','द्वितीया','तृतीया','चर्तुथी','पन्चमी','षष्ठी','सप्तमी','सम्बोधन'].
@@ -76,8 +76,10 @@ Out [2]: [['नाम', 'नामनी', 'नामानि'],
 
 ['हे नाम', 'हे नामनी', 'हे नामानि']]
 
-﻿## Gratitute
+### Gratitute
+
 I am greatly thankful to The Sankrit Heritage Site for the guidance.
 
-﻿## Author
+### Author
+
 * Sourabh Garg sourabh.8.june.1996@gmail.com @codeSG
